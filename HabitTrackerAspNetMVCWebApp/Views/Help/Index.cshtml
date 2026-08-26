@@ -1,0 +1,147 @@
+@{
+    ViewData["Title"] = "Help • How to Use HabitTracker";
+}
+<div class="fun-header p-4 p-lg-5 mb-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <h1 class="fw-bold display-6"><i class="bi bi-question-circle-fill"></i> How to Use HabitTracker</h1>
+            <p class="lead mb-2">Your friendly guide — from first login to daily streaks. No code, just clicks! ✨</p>
+            <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-white text-dark rounded-pill"><i class="bi bi-person-plus me-1"></i> Register</span>
+                <span class="badge bg-warning text-dark rounded-pill"><i class="bi bi-calendar-heart me-1"></i> Calendar</span>
+                <span class="badge bg-info text-dark rounded-pill"><i class="bi bi-kanban me-1"></i> Kanban</span>
+            </div>
+        </div>
+        <div class="col-lg-5 text-center"><img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=500&auto=format&fit=crop&q=80" class="anime-float w-100" style="max-height:200px;object-fit:cover" alt="anime help" /></div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-3">
+        <div class="glass-card p-3 sticky-top" style="top:90px">
+            <h6 class="fw-bold"><i class="bi bi-list-stars"></i> Quick Menu</h6>
+            <div class="d-grid gap-1">
+                <a href="#start" class="btn btn-sm btn-gradient rounded-pill">1. Start</a>
+                <a href="#habits" class="btn btn-sm btn-outline-light rounded-pill" style="border-color:rgba(255,255,255,0.2);color:#e6e6f0 !important">2. Habits</a>
+                <a href="#calendar" class="btn btn-sm btn-outline-light rounded-pill" style="border-color:rgba(255,255,255,0.2);color:#e6e6f0 !important">3. Calendar</a>
+                <a href="#kanban" class="btn btn-sm btn-outline-light rounded-pill" style="border-color:rgba(255,255,255,0.2);color:#e6e6f0 !important">4. Kanban</a>
+                <a href="#tips" class="btn btn-sm btn-outline-light rounded-pill" style="border-color:rgba(255,255,255,0.2);color:#e6e6f0 !important">5. Tips</a>
+            </div>
+            <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" style="width:100%;height:110px;object-fit:cover;border-radius:12px" class="mt-3" alt="anime gif" onerror="this.style.display='none'" />
+            <p class="small text-muted mt-2">Tip: Keep this page open in a new tab while you explore!</p>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <!-- START -->
+        <div id="start" class="glass-card p-4 mb-4">
+            <h4 class="fw-bold"><span class="feature-icon icon-purple d-inline-flex me-2" style="width:36px;height:36px;font-size:18px">1</span> Getting Started</h4>
+            <div class="row g-3 align-items-center">
+                <div class="col-md-7">
+                    <h6 class="fw-bold" style="color:#a29bfe">New here?</h6>
+                    <ol>
+                        <li>Click <b>Register</b> (top right) → fill email + password → <b>Register</b></li>
+                        <li>Then <b>Login</b> → you’ll land on <b>Home</b> → <i>Welcome to HabitTracker</i></li>
+                        <li>Already have account? Use <b>Login</b> directly.</li>
+                    </ol>
+                    <div class="p-2 rounded-3 d-flex gap-2 align-items-center" style="background:rgba(0,229,204,0.10);border:1px solid rgba(0,229,204,0.22)">
+                        <i class="bi bi-lightbulb-fill text-warning fs-4"></i>
+                        <div><b>Demo quick start:</b> Login as <code>zasadna@gmail.com / Qw123456$</code> to see a filled account.</div>
+                    </div>
+                    <p class="small text-muted mt-2 mb-0"><i class="bi bi-arrow-right me-1"></i> After login, top bar shows <b>Habits</b>, <b>Calendar</b>, <b>Kanban</b> — that’s your workspace.</p>
+                </div>
+                <div class="col-md-5"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:190px;object-fit:cover" alt="login desk" /></div>
+            </div>
+        </div>
+
+        <!-- HABITS -->
+        <div id="habits" class="glass-card p-4 mb-4">
+            <h4 class="fw-bold"><span class="feature-icon icon-pink d-inline-flex me-2" style="width:36px;height:36px;font-size:18px">2</span> Habits — Your Colorful Cards</h4>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h6 class="fw-bold" style="color:#ff6b9d">Create a habit</h6>
+                    <ol>
+                        <li>Go <b>Habits → Create New Habit</b></li>
+                        <li>Fill <b>Title</b> (e.g., <i>Morning Yoga 🧘‍♀️</i>), <b>Description</b>, pick <b>Daily</b> or <b>Weekly</b></li>
+                        <li>Choose <b>Status</b> (Active) and <b>Kanban</b> (To Do), set <b>Start Date</b> → <b>Create</b></li>
+                    </ol>
+                    <h6 class="fw-bold mt-3" style="color:#a29bfe">Manage</h6>
+                    <ul>
+                        <li><b>View</b> → see details + anime cover</li>
+                        <li><b>Edit</b> → change title, frequency, dates, move Kanban</li>
+                        <li><b>Delete</b> → remove habit + its logs</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:200px;object-fit:cover" alt="anime habit" />
+                    <img src="https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif" style="width:100%;height:100px;object-fit:cover;border-radius:12px" class="mt-2" alt="habit gif" onerror="this.style.display='none'" />
+                    <p class="small text-muted mt-1">Each habit becomes a kawaii card with random anime art ✨</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALENDAR -->
+        <div id="calendar" class="glass-card p-4 mb-4">
+            <h4 class="fw-bold"><span class="feature-icon icon-teal d-inline-flex me-2" style="width:36px;height:36px;font-size:18px">3</span> Calendar — Log Every Day</h4>
+            <div class="row g-3 align-items-center">
+                <div class="col-md-7">
+                    <ol>
+                        <li>Open <b>Calendar</b> → see month grid, today highlighted</li>
+                        <li>Find your habit on a date → click the date</li>
+                        <li>Choose: <span class="badge-fun badge-completed">Completed</span> <span class="badge-fun badge-inprogress">Partially</span> <span class="badge-fun badge-todo">Skipped</span> or <b>Clear</b> to undo</li>
+                        <li>Want all today done at once? Click <b>Mark all today completed</b></li>
+                    </ol>
+                    <div class="p-2 rounded-3" style="background:rgba(253,203,110,0.12);border:1px solid rgba(253,203,110,0.22)">
+                        <i class="bi bi-stars text-warning"></i> <b>Magic:</b> Logging today auto-moves your Kanban card! Completed → Done, Partial → In Progress.
+                    </div>
+                </div>
+                <div class="col-md-5"><img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=500&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:200px;object-fit:cover" alt="calendar" /><img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" style="width:100%;height:90px;object-fit:cover;border-radius:12px" class="mt-2" alt="calendar gif" onerror="this.style.display='none'" /></div>
+            </div>
+        </div>
+
+        <!-- KANBAN -->
+        <div id="kanban" class="glass-card p-4 mb-4">
+            <h4 class="fw-bold"><span class="feature-icon icon-blue d-inline-flex me-2" style="width:36px;height:36px;font-size:18px">4</span> Kanban — Drag-Free Workflow</h4>
+            <div class="row g-3 align-items-center">
+                <div class="col-md-7">
+                    <p>Three columns: <b>To Do</b> → <b>In Progress</b> → <b>Done</b></p>
+                    <ul>
+                        <li><b>To Do</b> → click <b>Start</b> to move to In Progress (logs today as Partially)</li>
+                        <li><b>In Progress</b> → <b>Complete</b> → Done (logs today as Completed) or <b>To Do</b> to undo</li>
+                        <li><b>Done</b> → habit finished! You can still <b>Reopen</b> if needed</li>
+                    </ul>
+                    <p class="small text-muted">Perfect for visual thinkers — see all habits flow like anime quest boards!</p>
+                </div>
+                <div class="col-md-5"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:200px;object-fit:cover" alt="kanban" /><img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" style="width:100%;height:90px;object-fit:cover;border-radius:12px" class="mt-2" alt="kanban gif" onerror="this.style.display='none'" /></div>
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div id="tips" class="glass-card p-4">
+            <h4 class="fw-bold"><i class="bi bi-magic me-1" style="color:#FDCB6E"></i> Tips to Shine</h4>
+            <div class="row g-3">
+                <div class="col-md-4 text-center">
+                    <div class="feature-icon icon-orange mx-auto"><i class="bi bi-fire"></i></div>
+                    <h6 class="fw-bold">Streak Power</h6>
+                    <p class="small text-muted">Log daily — your Home shows total habits & recent ones. Consistency > perfection!</p>
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:100px;object-fit:cover" alt="streak" />
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="feature-icon icon-purple mx-auto"><i class="bi bi-shield-lock"></i></div>
+                    <h6 class="fw-bold">Admin?</h6>
+                    <p class="small text-muted">Admins see <b>Admin</b> menu → manage users, activate/deactivate, seed demo data.</p>
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&auto=format&fit=crop&q=80" class="w-100 rounded-3" style="height:100px;object-fit:cover" alt="admin" />
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="feature-icon icon-teal mx-auto"><i class="bi bi-phone"></i></div>
+                    <h6 class="fw-bold">Any Device</h6>
+                    <p class="small text-muted">Dark anime UI + gifs works on phone & laptop. Bookmark <b>Help</b>!</p>
+                    <img src="https://media.giphy.com/media/3o7TKQ8kAP0f9X5PoY/giphy.gif" style="width:100%;height:100px;object-fit:cover;border-radius:12px" alt="gif" onerror="this.style.display='none'" />
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a asp-controller="Habits" asp-action="Index" class="btn btn-gradient rounded-pill"><i class="bi bi-rocket-takeoff me-1"></i> Go to My Habits</a>
+                <a asp-controller="Calendar" asp-action="Index" class="btn btn-ghost rounded-pill">Open Calendar</a>
+            </div>
+        </div>
+    </div>
+</div>

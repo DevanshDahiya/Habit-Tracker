@@ -10,12 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-blobs" aria-hidden="true">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-        <div class="blob blob4"></div>
-    </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-habit sticky-top">
             <div class="container">
@@ -25,13 +19,14 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navHabit">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index"><i class="bi bi-house-heart me-1"></i>Home</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Habits" asp-action="Index"><i class="bi bi-check2-square me-1"></i>Habits</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Calendar" asp-action="Index"><i class="bi bi-calendar-week me-1"></i>Calendar</a></li>
-                        <li class="nav-item"><a class="nav-link" asp-controller="Kanban" asp-action="Index"><i class="bi bi-kanban me-1"></i>Kanban</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Habits" asp-action="Index">Habits</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Calendar" asp-action="Index">Calendar</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Kanban" asp-action="Index">Kanban</a></li>
                         @if (User.IsInRole("Admin")) {
-                            <li class="nav-item"><a class="nav-link" asp-controller="AdminUsers" asp-action="Index"><i class="bi bi-shield-lock me-1"></i>Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="AdminUsers" asp-action="Index">Admin</a></li>
                         }
+                        <li class="nav-item"><a class="nav-link" asp-controller="Help" asp-action="Index">Help</a></li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -45,30 +40,9 @@
             @RenderBody()
         </main>
     </div>
-    <footer class="footer-habit py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-5">
-                    <h5 class="text-white fw-bold"><i class="bi bi-stars text-warning"></i> HabitTracker</h5>
-                    <p class="small">Build better habits. Visual calendar, Kanban board and role-based tracking — all in one beautiful ASP.NET MVC app.</p>
-                    <p class="small">Made with <i class="bi bi-heart-fill text-danger"></i> for Group 17</p>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="text-white">Explore</h6>
-                    <ul class="list-unstyled small">
-                        <li><a asp-controller="Habits" asp-action="Index">My Habits</a></li>
-                        <li><a asp-controller="Calendar" asp-action="Index">Calendar Progress</a></li>
-                        <li><a asp-controller="Kanban" asp-action="Index">Kanban Workflow</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="text-white">Tip</h6>
-                    <p class="small">Mark habits daily in Calendar, move them on Kanban, and watch your streak grow <i class="bi bi-fire text-warning"></i></p>
-                    <span class="badge-gradient">Daily • Weekly • Custom</span>
-                </div>
-            </div>
-            <hr class="border-secondary opacity-25 my-4" />
-            <div class="text-center small">&copy; 2026 HabitTracker • Built with ASP.NET Core 10 • <a asp-controller="Home" asp-action="Privacy">Privacy</a></div>
+    <footer class="footer-habit py-4">
+        <div class="container text-center small">
+            &copy; 2026 HabitTracker • <a asp-controller="Help" asp-action="Index">Help</a> • <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

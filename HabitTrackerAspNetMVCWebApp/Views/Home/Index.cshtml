@@ -37,6 +37,28 @@
     </div>
 </div>
 
+<!-- DEMO GENERATOR -->
+<div class="glass-card p-4 mt-4">
+    <div class="row align-items-center g-3">
+        <div class="col-md-8">
+            <h4 class="fw-bold" style="color:#000000"><i class="bi bi-magic" style="color:#6C5CE7"></i> Generate Demo Data</h4>
+            <p class="mb-1" style="color:#000000">Click to create <b>demo user</b> <code>demo.user@habittracker.local / Qw123456$</code> + <b>10 demo habits</b> (5 for admin, 5 for demo user) with logs, as in <code>DemoDataSeeder.cs</code>. Removes old <code>Demo -</code> habits first.</p>
+            <p class="small text-muted mb-0">Admin only. Login as <code>zasadna@gmail.com / Qw123456$</code> to see button enabled.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            @if (User.IsInRole("Admin")) {
+                <form asp-controller="Habits" asp-action="SeedDemoData" method="post">
+                    <button type="submit" class="btn btn-gradient btn-lg rounded-pill"><i class="bi bi-stars me-1"></i> Generate Demo Users + Habits</button>
+                </form>
+                <small class="text-muted d-block mt-2">Creates 10 habits instantly</small>
+            } else {
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-ghost rounded-pill">Login as Admin to Generate</a>
+                <small class="text-muted d-block mt-2">Admin required</small>
+            }
+        </div>
+    </div>
+</div>
+
 <!-- HOW IT WORKS -->
 <div class="mt-5">
     <div class="text-center mb-4">
@@ -114,15 +136,4 @@
     </div>
 }
 
-<!-- QUICK GUIDE -->
-<div class="alert alert-light border mt-5 rounded-4 p-4" style="background: linear-gradient(180deg,#fff,#f8f9ff)">
-    <h5 class="fw-bold"><i class="bi bi-info-circle-fill text-primary"></i> Quick guide — How the site works right now</h5>
-    <ol class="mb-0">
-        <li><b>Sign up / Login</b> (Identity) — roles <code>Admin</code> + <code>User</code> auto-created.</li>
-        <li><b>Create habit</b> → Habits → Create (daily/weekly, status, kanban).</li>
-        <li><b>Calendar</b> → pick a day → log <i>Completed / Partially / Skipped / Clear</i>. Calendar auto-marks Kanban.</li>
-        <li><b>Kanban</b> → Todo / InProgress / Done buttons update today's log.</li>
-        <li><b>Admin</b> (if Admin) → manage users, see habit counts, seed demo data.</li>
-    </ol>
-    <p class="small text-muted mt-2 mb-0">Tech: ASP.NET Core 10 MVC + EF Core + SQL Server (now <code>.\SQLEXPRESS</code>), auto-migrates on startup. All deps isolated in <code>.nuget\packages</code>.</p>
-</div>
+
