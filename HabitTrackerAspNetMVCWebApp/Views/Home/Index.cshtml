@@ -1,0 +1,128 @@
+@model List<HabitTrackerAspNetMVCWebApp.Models.Habit>
+@{
+    ViewData["Title"] = "Home";
+    var isAuth = User.Identity?.IsAuthenticated == true;
+}
+
+<!-- HERO -->
+<div class="hero p-4 p-lg-5 mt-3">
+    <div class="row align-items-center g-4 position-relative" style="z-index:1">
+        <div class="col-lg-6">
+            <span class="badge bg-white text-dark rounded-pill px-3 py-2 mb-3 shadow-sm"><i class="bi bi-lightning-charge-fill text-warning"></i> New • Calendar + Kanban + Admin</span>
+            <h1 class="display-5 fw-bold lh-1">Build habits that <span style="color:#FDCB6E">actually stick</span></h1>
+            <p class="lead mt-3 opacity-90">Track daily & weekly habits, log progress in a soft calendar, move habits on a Kanban board and watch stats grow. Minimal, joyful and built for you.</p>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                @if (!isAuth) {
+                    <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-light btn-lg rounded-3 fw-bold shadow"><i class="bi bi-rocket-takeoff me-1"></i> Get Started Free</a>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-ghost btn-lg bg-white"> <i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+                } else {
+                    <a asp-controller="Habits" asp-action="Index" class="btn btn-light btn-lg rounded-3 fw-bold shadow"><i class="bi bi-plus-circle me-1"></i> My Habits (@Model.Count)</a>
+                    <a asp-controller="Calendar" asp-action="Index" class="btn btn-ghost btn-lg bg-white">Open Calendar</a>
+                }
+            </div>
+            <div class="d-flex gap-2 mt-4">
+                <div class="stat-pill"><i class="bi bi-calendar-check text-primary"></i> @Model.Count habits</div>
+                <div class="stat-pill"><i class="bi bi-kanban text-success"></i> Kanban ready</div>
+                <div class="stat-pill"><i class="bi bi-shield-check text-warning"></i> Admin tools</div>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=700&q=80&auto=format&fit=crop" class="hero-img w-100" style="max-height:360px" alt="Habit planning desk" />
+            <div class="mt-3 d-flex justify-content-center gap-2">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG9ia3NodW5pMmZ3NnJqZ2w4Z2s0c3R1cHByaW5nZyZlcD0mZ2wmcGc9Zw/3o6ZtaO9BZHcOjmCFy/giphy.gif" alt="celebration gif" style="width:120px;height:90px;object-fit:cover;border-radius:12px;border:3px solid white;box-shadow:0 6px 16px rgba(0,0,0,.2)" onerror="this.src='https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif'" />
+                <img src="https://media.giphy.com/media/l1J9u3TZfpfeDLDlK/giphy.gif" alt="check gif" style="width:120px;height:90px;object-fit:cover;border-radius:12px;border:3px solid white;box-shadow:0 6px 16px rgba(0,0,0,.2)" onerror="this.style.display='none'" />
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=200&q=80&auto=format&fit=crop" style="width:120px;height:90px;object-fit:cover;border-radius:12px;border:3px solid white" alt="fitness" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">How it works</h2>
+        <p class="text-muted">3 simple steps — from idea to streak</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="glass-card p-3 h-100 how-step">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&auto=format&fit=crop" alt="create habit" />
+                <div class="feature-icon icon-purple mx-auto mt-3"><i class="bi bi-pencil-square"></i></div>
+                <h5 class="fw-bold">1. Create habits</h5>
+                <p class="text-muted small">Add title, frequency (daily/weekly), start date and Kanban status. Your data stays isolated per user.</p>
+                <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" alt="typing gif" style="width:100%;height:110px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card p-3 h-100 how-step">
+                <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&q=80&auto=format&fit=crop" alt="calendar" />
+                <div class="feature-icon icon-teal mx-auto mt-3"><i class="bi bi-calendar-heart"></i></div>
+                <h5 class="fw-bold">2. Log in Calendar</h5>
+                <p class="text-muted small">Tap a date: <span class="badge bg-success">Completed</span> <span class="badge bg-warning text-dark">Partial</span> <span class="badge bg-secondary">Skipped</span> or Clear. Plus <b>Mark all today completed</b>.</p>
+                <img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" alt="calendar gif" style="width:100%;height:110px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="glass-card p-3 h-100 how-step">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&auto=format&fit=crop" alt="kanban" />
+                <div class="feature-icon icon-orange mx-auto mt-3"><i class="bi bi-kanban"></i></div>
+                <h5 class="fw-bold">3. Move on Kanban</h5>
+                <p class="text-muted small">Todo → In Progress → Done. Drag-free buttons update logs and keep dashboard stats fresh.</p>
+                <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="kanban gif" style="width:100%;height:110px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<div class="mt-5">
+    <h2 class="fw-bold text-center mb-4">Everything you need</h2>
+    <div class="row g-4">
+        <div class="col-md-3"><div class="glass-card p-4 h-100 text-center"><div class="feature-icon icon-purple mx-auto"><i class="bi bi-graph-up-arrow"></i></div><h6 class="fw-bold">Dashboard</h6><p class="small text-muted">Total / Active / Completed + recent habits at a glance.</p><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" class="w-100 rounded-3" style="height:110px;object-fit:cover" alt="dashboard" /></div></div>
+        <div class="col-md-3"><div class="glass-card p-4 h-100 text-center"><div class="feature-icon icon-teal mx-auto"><i class="bi bi-calendar-week"></i></div><h6 class="fw-bold">Calendar</h6><p class="small text-muted">Monthly view with planned habits per date + icons.</p><img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&q=80&auto=format&fit=crop" class="w-100 rounded-3" style="height:110px;object-fit:cover" alt="calendar2" /></div></div>
+        <div class="col-md-3"><div class="glass-card p-4 h-100 text-center"><div class="feature-icon icon-orange mx-auto"><i class="bi bi-columns-gap"></i></div><h6 class="fw-bold">Kanban</h6><p class="small text-muted">Visual workflow grouped by KanbanStatus.</p><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80&auto=format&fit=crop" class="w-100 rounded-3" style="height:110px;object-fit:cover" alt="team" /></div></div>
+        <div class="col-md-3"><div class="glass-card p-4 h-100 text-center"><div class="feature-icon icon-blue mx-auto"><i class="bi bi-shield-lock"></i></div><h6 class="fw-bold">Admin</h6><p class="small text-muted">Manage users, activate/deactivate, seed demo data.</p><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80&auto=format&fit=crop" class="w-100 rounded-3" style="height:110px;object-fit:cover" alt="admin" /></div></div>
+    </div>
+</div>
+
+<!-- BRIEF + LOGGED IN TABLE -->
+@if (isAuth) {
+    <div class="glass-card p-4 mt-5">
+        <h4 class="fw-bold"><i class="bi bi-stars text-warning"></i> Your habits overview</h4>
+        @if (Model.Any()) {
+            <div class="table-responsive mt-3">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light"><tr><th>Title</th><th>Frequency</th><th>Status</th><th>Kanban</th><th>Start</th></tr></thead>
+                    <tbody>
+                    @foreach (var h in Model) {
+                        <tr><td class="fw-semibold">@h.Title</td><td><span class="badge bg-light text-dark border">@h.Frequency</span></td><td><span class="badge @(h.Status==HabitStatus.Completed? "bg-success":"bg-primary")">@h.Status</span></td><td>@h.KanbanStatus</td><td>@h.StartDate.ToShortDateString()</td></tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        } else {
+            <p class="text-muted">No habits yet — <a asp-controller="Habits" asp-action="Create" class="fw-bold">create your first habit</a> and it will appear here!</p>
+            <img src="https://media.giphy.com/media/3o7TKQ8kAP0f9X5PoY/giphy.gif" alt="empty" style="max-width:320px;border-radius:12px" onerror="this.style.display='none'" />
+        }
+    </div>
+} else {
+    <div class="glass-card p-4 mt-5 text-center">
+        <h4 class="fw-bold">Try the demo</h4>
+        <p class="text-muted">Login as admin <code>zasadna@gmail.com / Qw123456$</code> or use demo user after seeding.</p>
+        <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-gradient">Login to explore <i class="bi bi-arrow-right ms-1"></i></a>
+        <div class="mt-3"><img src="https://media.giphy.com/media/L1R1tvI9svkIWnXr7n/giphy.gif" alt="demo gif" style="max-width:420px;width:100%;border-radius:16px" onerror="this.style.display='none'" /></div>
+    </div>
+}
+
+<!-- QUICK GUIDE -->
+<div class="alert alert-light border mt-5 rounded-4 p-4" style="background: linear-gradient(180deg,#fff,#f8f9ff)">
+    <h5 class="fw-bold"><i class="bi bi-info-circle-fill text-primary"></i> Quick guide — How the site works right now</h5>
+    <ol class="mb-0">
+        <li><b>Sign up / Login</b> (Identity) — roles <code>Admin</code> + <code>User</code> auto-created.</li>
+        <li><b>Create habit</b> → Habits → Create (daily/weekly, status, kanban).</li>
+        <li><b>Calendar</b> → pick a day → log <i>Completed / Partially / Skipped / Clear</i>. Calendar auto-marks Kanban.</li>
+        <li><b>Kanban</b> → Todo / InProgress / Done buttons update today's log.</li>
+        <li><b>Admin</b> (if Admin) → manage users, see habit counts, seed demo data.</li>
+    </ol>
+    <p class="small text-muted mt-2 mb-0">Tech: ASP.NET Core 10 MVC + EF Core + SQL Server (now <code>.\SQLEXPRESS</code>), auto-migrates on startup. All deps isolated in <code>.nuget\packages</code>.</p>
+</div>

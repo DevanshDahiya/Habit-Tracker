@@ -1,0 +1,96 @@
+@model List<HabitTrackerAspNetMVCWebApp.Models.Habit>
+@{
+    ViewData["Title"] = ViewBag.PageTitle ?? "My Habits";
+    var animeImgs = new [] {
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1601850494422-3cf14624b0b3?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1618331835717-801e976710b2?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1578632292335-df3ab3100d00?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80"
+    };
+    var gifs = new [] {
+        "https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif",
+        "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif",
+        "https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif"
+    };
+    var rnd = new Random();
+}
+<div class="fun-header p-4 p-lg-5 mb-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <h1 class="fw-bold display-6 mb-2"><i class="bi bi-stars"></i> @ViewData["Title"] <span class="badge bg-white text-dark rounded-pill ms-2" style="font-size:14px">@Model.Count total ✨</span></h1>
+            <p class="mb-3 opacity-90">Your habits, but make it <b>kawaii & colorful</b>! Each card has a random anime vibe, soft gradients and fun badges. Create, track, and flex your streak!</p>
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-action="Create" class="btn btn-light rounded-pill fw-bold shadow"><i class="bi bi-plus-circle-fill me-1 text-primary"></i> Create New Habit</a>
+                @if(ViewBag.IsAdmin){
+                    <a asp-action="Index" asp-route-all="true" class="btn btn-outline-light rounded-pill fw-bold">All Habits 🌈</a>
+                    <a asp-action="Index" asp-route-userId="@ViewBag.SelectedUserId" class="btn btn-outline-light rounded-pill fw-bold @(ViewBag.SelectedUserId==null?"d-none":"")">Filter</a>
+                }
+                <a asp-controller="Calendar" asp-action="Index" class="btn btn-dark rounded-pill"><i class="bi bi-calendar-heart me-1"></i> Calendar</a>
+                <a asp-controller="Kanban" asp-action="Index" class="btn btn-warning rounded-pill fw-bold"><i class="bi bi-kanban me-1"></i> Kanban</a>
+            </div>
+        </div>
+        <div class="col-lg-5 text-center">
+            <img src="https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=500&auto=format&fit=crop&q=80" class="anime-float w-100" style="max-height:240px;object-fit:cover" alt="anime aesthetic" />
+            <div class="d-flex gap-2 justify-content-center mt-2">
+                <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" style="width:110px;height:80px;object-fit:cover;border-radius:12px;border:2px solid white" alt="anime gif" onerror="this.style.display='none'" />
+                <img src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=200&auto=format&fit=crop&q=80" style="width:110px;height:80px;object-fit:cover;border-radius:12px;border:2px solid white" alt="anime2" />
+                <img src="https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif" style="width:110px;height:80px;object-fit:cover;border-radius:12px;border:2px solid white" alt="anime3" onerror="this.style.display='none'" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!Model.Any()) {
+    <div class="glass-card p-5 text-center">
+        <img src="https://media.giphy.com/media/3o7TKQ8kAP0f9X5PoY/giphy.gif" style="max-width:280px;border-radius:16px" alt="empty gif" onerror="this.style.display='none'" />
+        <h4 class="fw-bold mt-3">No habits yet — let's make one! ✨</h4>
+        <p class="text-muted">Your future anime-powered streak starts with one click.</p>
+        <a asp-action="Create" class="btn btn-gradient btn-lg rounded-pill">Create Your First Habit <i class="bi bi-arrow-right ms-1"></i></a>
+        <div class="mt-3"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&auto=format&fit=crop&q=80" class="rounded-4" style="max-width:420px;width:100%;height:160px;object-fit:cover" alt="anime desk" /></div>
+    </div>
+} else {
+    <div class="row g-4">
+        @for (int i = 0; i < Model.Count; i++) {
+            var h = Model[i];
+            var img = animeImgs[i % animeImgs.Length];
+            var freqClass = h.Frequency.ToString() == "Daily" ? "badge-daily" : "badge-weekly";
+            var statusClass = h.Status == HabitStatus.Completed ? "badge-completed" : "badge-active";
+            var kanbanClass = h.KanbanStatus == KanbanStatus.Todo ? "badge-todo" : h.KanbanStatus == KanbanStatus.InProgress ? "badge-inprogress" : "badge-done";
+            <div class="col-md-6 col-lg-4">
+                <div class="habit-card h-100">
+                    <div class="habit-card-top">
+                        <img src="@img" alt="anime habit" />
+                        <span class="chip"><i class="bi bi-stars text-warning"></i> @h.Frequency</span>
+                        <span class="chip freq-chip">@h.KanbanStatus</span>
+                    </div>
+                    <div class="p-3">
+                        <h5 class="fw-bold mb-1" style="color:#6C5CE7">@h.Title <span class="float-end" style="font-size:11px">@h.StartDate.ToString("MMM dd")</span></h5>
+                        <p class="small text-muted mb-2" style="min-height:36px">@(string.IsNullOrWhiteSpace(h.Description) ? "No description — add some kawaii details!" : (h.Description.Length>80 ? h.Description.Substring(0,80)+"…" : h.Description))</p>
+                        <div class="d-flex flex-wrap gap-1 mb-2">
+                            <span class="badge-fun @freqClass">@h.Frequency</span>
+                            <span class="badge-fun @statusClass">@h.Status</span>
+                            <span class="badge-fun @kanbanClass">@h.KanbanStatus</span>
+                        </div>
+                        @if (h.User != null) { <div class="small text-muted mb-2"><i class="bi bi-person-circle"></i> @h.User.Email</div> }
+                        <div class="d-flex gap-1 flex-wrap">
+                            <a asp-action="Details" asp-route-id="@h.Id" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-eye"></i> View</a>
+                            <a asp-action="Edit" asp-route-id="@h.Id" class="btn btn-sm btn-gradient rounded-pill"><i class="bi bi-pencil"></i> Edit</a>
+                            <a asp-action="Delete" asp-route-id="@h.Id" class="btn btn-sm btn-outline-danger rounded-pill"><i class="bi bi-trash"></i></a>
+                            <span class="ms-auto"><i class="bi bi-fire text-warning"></i> <small class="fw-bold">@rnd.Next(1,30) day streak</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div class="glass-card p-3 mt-4 d-flex align-items-center gap-3">
+    <img src="https://media.giphy.com/media/L1R1tvI9svkIWnXr7n/giphy.gif" style="width:90px;height:70px;object-fit:cover;border-radius:12px" alt="fun gif" onerror="this.style.display='none'" />
+    <div>
+        <strong>Pro tip ✨</strong> <span class="text-muted">Tap <b>Create</b>, pick a cute anime cover (auto-assigned), log daily in Calendar, and move cards on Kanban — your streak gets featured on Home!</span>
+        <span class="badge bg-warning text-dark rounded-pill ms-1">Anime Mode ON</span>
+    </div>
+</div>

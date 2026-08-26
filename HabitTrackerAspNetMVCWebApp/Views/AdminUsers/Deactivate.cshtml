@@ -1,0 +1,3 @@
+@model HabitTrackerAspNetMVCWebApp.ViewModels.AdminUserListItemViewModel
+<h1>Deactivate @Model.Email?</h1>
+<form asp-action="Deactivate" method="post"><input type="hidden" name="id" value="@Model.UserId"/><button type="submit" class="btn btn-danger">Deactivate</button></form>

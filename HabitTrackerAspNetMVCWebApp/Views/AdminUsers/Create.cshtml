@@ -1,0 +1,13 @@
+@model HabitTrackerAspNetMVCWebApp.ViewModels.AdminUserCreateViewModel
+@{
+    ViewData["Title"] = "Create User";
+}
+<h1>Create User</h1>
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3"><label asp-for="Email" class="form-label"></label><input asp-for="Email" class="form-control"/><span asp-validation-for="Email" class="text-danger"></span></div>
+    <div class="mb-3"><label asp-for="Password" class="form-label"></label><input asp-for="Password" class="form-control"/><span asp-validation-for="Password" class="text-danger"></span></div>
+    <div class="mb-3"><label asp-for="RoleName" class="form-label"></label><select asp-for="RoleName" class="form-select" asp-items="ViewBag.RoleName"></select></div>
+    <div class="mb-3"><input asp-for="IsActive" class="form-check-input"/><label asp-for="IsActive" class="form-check-label"></label></div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

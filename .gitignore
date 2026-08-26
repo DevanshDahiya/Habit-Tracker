@@ -1,0 +1,28 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# NuGet packages/cache
+.nuget/packages/
+
+# ASP.NET generated files
+wwwroot/lib/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment / secrets
+.env
+appsettings.Local.json

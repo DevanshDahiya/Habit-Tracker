@@ -1,0 +1,20 @@
+@model HabitTrackerAspNetMVCWebApp.ViewModels.CalendarViewModel
+@{
+    ViewData["Title"] = "Calendar " + Model.MonthName;
+}
+<h1>@Model.MonthName</h1>
+<div class="mb-3">
+    <a class="btn btn-secondary" asp-action="Index" asp-route-year="@Model.PrevYear" asp-route-month="@Model.PrevMonth">Prev</a>
+    <a class="btn btn-secondary" asp-action="Index" asp-route-year="@Model.NextYear" asp-route-month="@Model.NextMonth">Next</a>
+    <form asp-action="MarkAllForTodayCompleted" method="post" class="d-inline"><input type="hidden" name="year" value="@Model.Year"/><input type="hidden" name="month" value="@Model.Month"/><button class="btn btn-primary">Mark all today completed</button></form>
+</div>
+<div class="row row-cols-7 g-2">
+@foreach(var day in Model.Days){
+    <div class="col border p-2 @(day.IsToday ? "bg-warning bg-opacity-25" : "") @(day.IsCurrentMonth ? "" : "bg-light text-muted")">
+        <strong>@day.Date.Day</strong>
+        @foreach(var h in day.PlannedHabits){
+            <div class="small">@h.Title - @(h.CurrentStatus?.ToString() ?? "Planned")</div>
+        }
+    </div>
+}
+</div>

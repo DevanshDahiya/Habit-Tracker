@@ -1,0 +1,8 @@
+@model List<HabitTrackerAspNetMVCWebApp.ViewModels.AdminUserListItemViewModel>
+@{
+    ViewData["Title"] = "Admin Users";
+}
+<h1>Admin - Users</h1>
+<p><a asp-action="Create" class="btn btn-primary">Create User</a></p>
+<table class="table"><thead><tr><th>Email</th><th>Role</th><th>Habits</th><th>Active</th><th></th></tr></thead>
+<tbody>@foreach(var u in Model){<tr><td>@u.Email</td><td>@u.RoleName</td><td>@u.HabitCount</td><td>@u.IsActive</td><td><a asp-action="Edit" asp-route-id="@u.UserId">Edit</a></td></tr>}</tbody></table>

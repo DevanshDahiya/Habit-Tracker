@@ -1,0 +1,10 @@
+@model HabitTrackerAspNetMVCWebApp.ViewModels.KanbanBoardViewModel
+@{
+    ViewData["Title"] = "Kanban";
+}
+<h1>Kanban Board</h1>
+<div class="row">
+    <div class="col-md-4"><h3>Todo</h3>@foreach(var h in Model.TodoHabits){<div class="card mb-2"><div class="card-body"><h5>@h.Title</h5><p>@h.Description</p><form asp-action="StartToday" method="post"><input type="hidden" name="id" value="@h.Id"/><button class="btn btn-sm btn-primary">Start</button></form></div></div>}</div>
+    <div class="col-md-4"><h3>In Progress</h3>@foreach(var h in Model.InProgressHabits){<div class="card mb-2"><div class="card-body"><h5>@h.Title</h5><form asp-action="MarkTodayComplete" method="post"><input type="hidden" name="id" value="@h.Id"/><button class="btn btn-sm btn-success">Complete</button></form> <form asp-action="MoveToTodo" method="post" class="d-inline"><input type="hidden" name="id" value="@h.Id"/><button class="btn btn-sm btn-secondary">ToDo</button></form></div></div>}</div>
+    <div class="col-md-4"><h3>Done</h3>@foreach(var h in Model.DoneHabits){<div class="card mb-2"><div class="card-body"><h5>@h.Title</h5><p>@h.Status</p></div></div>}</div>
+</div>
